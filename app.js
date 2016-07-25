@@ -10,6 +10,16 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
+app.get('/uploads', function(req, res) {
+  fs.readdir("uploads", function(err, items) {
+
+    for (var i=0; i<items.length; i++) {
+        // console.log(items[i]);
+    }
+    res.status(200).send(items);
+  });
+})
+
 app.post('/upload', function(req, res){
 
   // create an incoming form object
